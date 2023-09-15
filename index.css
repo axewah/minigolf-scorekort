@@ -1,0 +1,13 @@
+.holes{
+    border: 1px black solid;
+}
+.holes input{
+    display:block;
+}
+.hidden{
+    display: none;
+}
+.names > *{
+    display: inline;
+    margin: 10px 5px 10px 5px;
+}
