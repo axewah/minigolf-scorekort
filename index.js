@@ -116,18 +116,27 @@ function createHole(c){
         input.type = "number";
         input.name = key;
         input.dataset.id = court.court[c].id;
-        input.addEventListener("input", scoreinput)
+        input.addEventListener("input", scoreInput)
         div.appendChild(input);
     }
 }
 
-function scoreinput(e){
-    if(players[e.target.name][e.target.dataset.id]){
-        players[e.target.name]["score"] -= players[e.target.name][e.target.dataset.id];
-    }
-    players[e.target.name][e.target.dataset.id] = parseInt(e.target.value);
-    players[e.target.name]["score"] += players[e.target.name][e.target.dataset.id];
-    
+function scoreInput(e){
+    if(e.target.value != "" && e.target.value < 1) e.target.value = 1;
+    if(e.target.value < 1){
+        e.target.value = "";
+        if(players[e.target.name][e.target.dataset.id]){
+            players[e.target.name]["score"] -= players[e.target.name][e.target.dataset.id];
+            players[e.target.name][e.target.dataset.id] = "";
+        }
+    } 
+    else{
+        if(players[e.target.name][e.target.dataset.id]){
+            players[e.target.name]["score"] -= players[e.target.name][e.target.dataset.id];
+        }
+        players[e.target.name][e.target.dataset.id] = parseInt(e.target.value);
+        players[e.target.name]["score"] += players[e.target.name][e.target.dataset.id];
+    }   
 }
 
 function emptyPage(){
