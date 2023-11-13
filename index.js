@@ -76,7 +76,9 @@ function addPlayer(e){
 
 function removePlayer(e){
     delete players[e.target.className];
-    document.querySelector("."+e.target.className).remove();
+    while(document.querySelector("."+e.target.className)) document.querySelector("."+e.target.className).remove();
+
+    e.preventDefault();
 }
 
 function startGame(){
@@ -115,6 +117,7 @@ function createHole(c){
         input.placeholder = key;
         input.type = "number";
         input.name = key;
+        input.classList.add(key);
         input.dataset.id = court.court[c].id;
         input.addEventListener("input", scoreInput)
         div.appendChild(input);
