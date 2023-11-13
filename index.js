@@ -68,9 +68,24 @@ function addPlayer(e){
         div.appendChild(button);
         
         document.getElementById("divNames").appendChild(div);
+
+        if(document.querySelector(".holes")){
+            var list = document.querySelectorAll("div.holes");
+            c=0;
+            list.forEach(function (div) {
+                let input = document.createElement("input");
+                input.placeholder = name.value;
+                input.type = "number";
+                input.name = name.value;
+                input.classList.add(name.value);
+                input.dataset.id = court.court[c].id;
+                input.addEventListener("input", scoreInput);
+                div.appendChild(input);
+                c++;
+            });
+        }
         name.value = "";
-    }
-       
+    }   
     e.preventDefault();
 }
 
