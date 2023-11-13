@@ -1,0 +1,3 @@
+confirmation on removePlayer
+localstorage
+css
